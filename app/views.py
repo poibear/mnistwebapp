@@ -9,7 +9,7 @@ from keras_preprocessing import image
 from keras.models import load_model
 from PIL import Image
 
-model_s = load_model("./static/model/mnist.h5")
+model_s = load_model(os.path.join(os.path.dirname(__file__), "static/model/mnist.h5"))
 path = ""
 secure_files = []
 
