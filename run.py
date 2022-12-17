@@ -9,7 +9,6 @@ def main():
     
     #app = Flask(__name__)
     os.environ["FLASK_APP"] = "run.py"
-    os.environ["FLASK_ENV"] = "development" #to autoreload when we make changes to our site, changes from production to dev mode
     os.environ["FLASK_DEBUG"] = "1"
     host = "127.0.0.1" # 0.0.0.0 runs on localhost/127.0.0.1
     port = 8080
