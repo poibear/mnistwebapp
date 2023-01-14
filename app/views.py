@@ -15,8 +15,11 @@ secure_files = []
 
 def allowed_file(filename):
     ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+    #return whether the file extension is in the given dictionary & has a . in file name
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+#actual ai stuff
 def evaluate_img(path):
     img = image.load_img(path, color_mode = 'grayscale', target_size = (28, 28))
     # # Inverting the image.

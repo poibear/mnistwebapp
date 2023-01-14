@@ -5,7 +5,7 @@ from app import app, views
 
 def main():
     app.debug = True
-    app.config['SECRET_KEY'] = 'thesecretcode'
+    app.config['SECRET_KEY'] = 'thesecretcode' #use flask_wtf to prevent csrf attacks
     
     #app = Flask(__name__)
     os.environ["FLASK_APP"] = "run.py"
