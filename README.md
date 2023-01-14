@@ -33,3 +33,4 @@ pip install -r requirements.txt
 
 ## Usage
 Run the `run.py` file. Waitress/Flask will open a localhost port (as specified) for the webpage to be accessed.
+You will need to supply this webapp with your own MNIST model. A guide can be found on Tensorflow
