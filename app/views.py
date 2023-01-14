@@ -42,7 +42,7 @@ def upload_file():
         if file and allowed_file(file.filename): #if valid extension
             filename = secure_filename(file.filename) #checks if filename has alphanumeric symbols (e.g., instead of SQL) & converts to ASCII
             new_filename = str(datetime.timestamp(datetime.now())) + \
-                os.path.splitext(filename)[1]
+                os.path.splitext(filename)[1] #add some uniqueness
             path = os.path.join(app.root_path,
                                 'static/img/upload', new_filename)
             file.save(path)
