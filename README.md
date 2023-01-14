@@ -3,7 +3,7 @@
 Uses an MNIST model for number classification, displaying the model's results on a webpage.
 
 ## Requirements
-- ~~Python >= 3.11.x~~
+- ~~Python >= 3.11.x~~ (Keras doesn't work on this version yet)
 - Python <= 3.10.x
 - Flask
 - Flask-WTF
@@ -27,6 +27,9 @@ Uses an MNIST model for number classification, displaying the model's results on
 
 ### note
 packages can be downloaded from the `requirements.txt` file
+```
+pip install -r requirements.txt
+```
 
 ## Usage
 Run the `run.py` file. Waitress/Flask will open a localhost port (as specified) for the webpage to be accessed.
