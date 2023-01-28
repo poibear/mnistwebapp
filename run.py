@@ -1,3 +1,4 @@
+#TODO: read multiple numbers with opencv
 import waitress
 import os
 from flask import Flask

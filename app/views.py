@@ -45,6 +45,7 @@ def upload_file():
                 os.path.splitext(filename)[1] #add some uniqueness
             path = os.path.join(app.root_path,
                                 'static/img/upload', new_filename)
+            #os.path.join('static/img/upload', new_filename)
             file.save(path)
             result = evaluate_img(path)
             # result = evaluate_img(path, form.white_background.data)
