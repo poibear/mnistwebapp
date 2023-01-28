@@ -5,4 +5,4 @@ app/__pycache__
 __pycache__/
 .vscode/
 pyvenv.cfg
-app/static/model/mnist.h5
+app/static/model/
