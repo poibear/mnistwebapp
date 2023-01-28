@@ -1,6 +1,5 @@
 Flask==2.2.2
 Flask-WTF==1.1.1
-itsdangerous==2.1.2
 Jinja2==3.1.2
 keras==2.11.0
 Keras-Preprocessing==1.1.2
