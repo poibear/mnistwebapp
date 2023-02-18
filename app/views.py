@@ -5,9 +5,8 @@ from app.forms import (UploadForm, ResultForm)
 from datetime import datetime
 from werkzeug.utils import secure_filename
 import numpy as np
-from keras_preprocessing import image
+from keras.utils import load_img, img_to_array
 from keras.models import load_model
-from PIL import Image
 
 model_s = load_model(os.path.join(os.path.dirname(__file__), "static/model/mnist.h5"))
 path = ""
@@ -21,11 +20,11 @@ def allowed_file(filename):
 
 #actual ai stuff
 def evaluate_img(path):
-    img = image.load_img(path, color_mode = 'grayscale', target_size = (28, 28))
+    img = load_img(path, color_mode = 'grayscale', target_size = (28, 28))
     # # Inverting the image.
     # if white_bg:
     #     img = Image.fromarray(np.invert(img))
-    x = image.img_to_array(img)
+    x = img_to_array(img)
     if np.average(x) - 128 > 0:
         x = 255 - x #remove white background outside focus of img
     x /= 255
