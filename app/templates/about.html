@@ -3,13 +3,13 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block main %}
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1>About this Web App</h1>
-            <br>
-            <p>Lorem ipsum dolor sit amet.</p>
-        </div>
-    </div>
-</div>
+<h1>About this Web App</h1>
+<br>
+<p>
+The website uses an MNIST AI model to recognize and classify handwritten digits. Trained on a dataset of 70,000 images, this model is highly accurate in identifying digits and classifying them into their correct numerical category.
+
+Users can upload an image of a handwritten digit to the website, and the model will classify it accordingly. This feature is useful in various applications such as automated mail sorting and bank check processing.
+    
+The model uses a convolutional neural network (CNN) algorithm to extract features from the input image and identify the digit. The model is trained on the MNIST dataset using backpropagation, which adjusts the model's weights and biases to minimize the error between predicted and actual output. Once trained, the model can classify new input images with high accuracy.
+</p>
 {% endblock %}

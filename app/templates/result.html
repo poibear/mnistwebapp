@@ -8,7 +8,9 @@
     <form method="GET" enctype=multipart/form-data action="/">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Result</legend>
+            <legend class="border-bottom mb-4">
+                <h2>Result</h2>
+            </legend>
             <div class="form-group" id="form">
                 <br>
             </div>
@@ -16,23 +18,25 @@
                 <img src="{{ path }}" width="56", height="56">
             </div>
             <div class="result">
-                Prediction: {{ pred }}
+                <h3>Prediction: {{ pred }}</h3>
             </div>
             <div class="possibility">
-                Probability between 0 and 9:<br>
+                <p>Probability Between 0 and 9:</p>
+                <br>
                 {% for row in result %} <!--display each result line (percentage of guesses)-->
                     {{ loop.index - 1 }}: {{(row * 100)|round(2, 'common')}} % <br>
                 {% endfor %}
             </div>
         </fieldset>
+        <br>
         {{ form.submit(class='btn btn-outline-info') }} <!--submit button to ai-->
     </form>
 </div>
 
 {% endblock %}
 
-{% block script %}
+<!-- {% block script %}
     <script>
     // alert("Template inheritance is awesome");
     </script>
-{% endblock %}
+{% endblock %} -->

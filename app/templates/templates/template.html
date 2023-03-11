@@ -1,53 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>{% block title %}{% endblock %}</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+        <meta name="viewport" content="width=device-width">
+        <meta name="author" content="poiboi">
+        <meta name="description" content="An MNIST web app, utilzing an MNIST AI model, that displays the results of predictions on uploaded images to classify digits.">
+        <meta name="keywords" content="developer,poiboi,backend,python,frontend,html,java,css,ai,github,coder,programmer,computer,cs,science">
+        <!-- <meta http-equiv="refresh" content="1"> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com"> <!--preload for fast loading times-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css?family=Thasadith" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <style>
+          section, #maintitle {
+            display: flex;
+          }
+          #programmerimg {
 
-    <!-- Import the Bootstrap stylesheet -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <!-- Import our custom stylesheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+            flex-basis: 80%;
+            margin: 0 8% 0 75%;
+          }
+          .pylng {
+            display: block;
+            font-family: inherit;
 
-    {% block style %}{% endblock %}
-</head>
-<body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+            background: linear-gradient(90deg, rgba(65,171,255,1) 0%, rgba(240,242,83,1) 45%, rgba(240,242,83,1) 100%);    background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        </style>
+        {% block style %}{% endblock %}
+    </head>
+    <body>
         <div class="container">
-            <a class="navbar-brand mr-4" href="/">Flask</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        
-            <div class="collapse navbar-collapse" id="navbarToggle">
-                <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="/about">About</a>
-                </div>    
-            </div>
+            <header>
+                <nav id="mainnav">
+                    <span class="logo-content">
+                        <a class="main-logo">
+                            <img src="{{ url_for('static', filename='img/what.png') }}">
+                        </a>
+                    </span>
+                    <ul>
+                        <li>
+                            <div id="themechange">
+                                <svg id="darkchange" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                                <svg id="lightchange" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512">
+                                    <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                    <path d="M505.2 324.8l-47.73-68.78l47.75-68.81c7.359-10.62 8.797-24.12 3.844-36.06c-4.969-11.94-15.52-20.44-28.22-22.72l-82.39-14.88l-14.89-82.41c-2.281-12.72-10.76-23.25-22.69-28.22c-11.97-4.936-25.42-3.498-36.12 3.844L256 54.49L187.2 6.709C176.5-.6016 163.1-2.039 151.1 2.896c-11.92 4.971-20.4 15.5-22.7 28.19l-14.89 82.44L31.15 128.4C18.42 130.7 7.854 139.2 2.9 151.2C-2.051 163.1-.5996 176.6 6.775 187.2l47.73 68.78l-47.75 68.81c-7.359 10.62-8.795 24.12-3.844 36.06c4.969 11.94 15.52 20.44 28.22 22.72l82.39 14.88l14.89 82.41c2.297 12.72 10.78 23.25 22.7 28.22c11.95 4.906 25.44 3.531 36.09-3.844L256 457.5l68.83 47.78C331.3 509.7 338.8 512 346.3 512c4.906 0 9.859-.9687 14.56-2.906c11.92-4.969 20.4-15.5 22.7-28.19l14.89-82.44l82.37-14.88c12.73-2.281 23.3-10.78 28.25-22.75C514.1 348.9 512.6 335.4 505.2 324.8zM456.8 339.2l-99.61 18l-18 99.63L256 399.1L172.8 456.8l-18-99.63l-99.61-18L112.9 255.1L55.23 172.8l99.61-18l18-99.63L256 112.9l83.15-57.75l18.02 99.66l99.61 18L399.1 255.1L456.8 339.2zM256 143.1c-61.85 0-111.1 50.14-111.1 111.1c0 61.85 50.15 111.1 111.1 111.1s111.1-50.14 111.1-111.1C367.1 194.1 317.8 143.1 256 143.1zM256 319.1c-35.28 0-63.99-28.71-63.99-63.99S220.7 192 256 192s63.99 28.71 63.99 63.1S291.3 319.1 256 319.1z" />
+                                </svg>
+                            </div>
+                        </li>
+                        <li><a href="index" class="nav-link">HOME</a></li>
+                        <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                        <li><a href="projects.html" class="nav-link">PROJECTS</a></li>
+                        <li><a href="misc.html" class="nav-link">MISC.</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <section>
+                <div class="maincontent">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class = "alert alert-{{ category }}">
+                                {{ message }}
+                                </div>
+                            {% endfor %} 
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                {% block main %}{% endblock %}
+            </section>
+            <footer>
+                <span>
+                    <a class="discord-icon" target="blank_" href="http://discord.gg/jcBhGGRwYE"><img src="{{ url_for('static', filename='img/discord.png') }}" height="50" width="50"></a>
+                    <a class="youtube-icon" target="blank_" href="https://www.youtube.com/channel/UC0MkjxVMXbcovLzBOd8cS3A"><img src="{{ url_for('static', filename='img/youtube.png') }}" height="50" width="50"></a>
+                    <a class="tor-icon" target="blank_" href="http://qxfntxha7akxtdb4sauiajlyikeotvzcedrmqahlbenyabuuzl2r2byd.onion/"><img src="{{ url_for('static', filename='img/orbot.png') }}" height="50" width="50"></a>
+                    <a class="github-icon" target="blank_" href="https://github.com/poibear"><img src="{{ url_for('static', filename='img/github.png') }}" height="50" width="50"></a>
+                </span>
+            </footer>
         </div>
-    </nav>
-    <main id="main">
-        <div class="col-md-8">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <div class = "alert alert-{{ category }}">
-                        {{ message }}
-                        </div>
-                    {% endfor %} 
-                {% endif %}
-            {% endwith %}
-        </div>
-    </main>
-    {% block main %}{% endblock %}
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    {% block script %}{% endblock %}
-</body>
+        <script>
+            $('#themechange').click(function(event) {
+                if ($("body").hasClass("dark-mode")) {
+                    $("body").removeClass("dark-mode")
+                }
+                else {
+                    $("body").addClass("dark-mode")
+                }
+                $("body").toggleClass('.dark-mode');
+                $('#darkchange').toggle();
+                $('#lightchange').toggle();
+                event.preventDefault();
+            });
+        </script>
+        {% block script %}{% endblock %}
+    </body>
 </html>
-
