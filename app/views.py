@@ -28,7 +28,7 @@ def evaluate_img(path):
     if np.average(x) - 128 > 0:
         x = 255 - x #remove white background outside focus of img
     x /= 255
-    x = np.expand_dims(x, axis = 0)
+    x = np.expand_dims(x, axis = 0) #change dimensions so it can perceive grayscale instead of usual color
     y_proba = model_s.predict(x)
     result = y_proba.tolist()
     return (result)
