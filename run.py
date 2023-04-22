@@ -1,3 +1,4 @@
+#!/usr/bin/python3.10
 #TODO: read multiple numbers with opencv
 import waitress
 import os
@@ -14,8 +15,8 @@ def main():
     port = 8080
     print(f'hosting on {host}:{port}')
     
-    app.run(port=port, debug=True, host=host)
-    #waitress.serve(app, host=host, port=port) #production server w/ waitress
+    #app.run(port=port, debug=True, host=host)
+    waitress.serve(app, host=host, port=port) #production server w/ waitress
 
 if __name__  == '__main__':
     main()
