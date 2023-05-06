@@ -1,5 +1,0 @@
-WITH GUNICORN (root?):
-gunicorn -w 3 run:app
-
-WITH WAITRESS
-waitress-serve --host 127.0.0.1 --port 8000 run:app
