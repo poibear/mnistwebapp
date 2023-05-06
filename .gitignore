@@ -7,3 +7,5 @@ __pycache__/
 pyvenv.cfg
 app/static/model/
 app/static/img/upload/
+immediatehost.txt
+portnoroot.txt
