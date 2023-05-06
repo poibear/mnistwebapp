@@ -3,25 +3,21 @@
 Uses an MNIST model for number classification, displaying the model's results on a webpage.
 
 ## Requirements
-- ~~Python >= 3.11.x~~ (Keras doesn't work on this version yet)
-- Python <= 3.10.x
+- Python >= 3.11.x
 - Flask
 - Flask-WTF
 - keras
-- Keras-Preprocessing
 - numpy
-- Pillow
 - waitress
 - WTForms
 - Tensorflow
 
 #### tested versions
-- Flask==2.2.2
-- Flask-WTF==1.0.1
+- Tensorflow==2.11.1
+- Flask==2.3.2
+- Flask-WTF==1.1.1
 - keras==2.11.0
-- Keras-Preprocessing==1.1.2
-- numpy==1.23.5
-- Pillow==9.3.0
+- numpy==1.24.1
 - waitress==2.1.2
 - WTForms==3.0.1
 

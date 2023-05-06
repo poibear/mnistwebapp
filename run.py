@@ -4,14 +4,17 @@
 import os
 from flask import Flask
 from app import app, views
-#from werkzeug.middleware.proxy_fix import ProxyFix
 
 app.config['SECRET_KEY'] = 'secret1'
 
 def main():
     app.debug = True
+<<<<<<< HEAD
     app.config['SECRET_KEY'] = 'thesecretcode' #use flask_wtf to prevent csrf attacks
 
+=======
+    
+>>>>>>> 705ab68e330c60ab3eb76786e939e860ef447fe8
     #app = Flask(__name__)
     os.environ["FLASK_APP"] = "run.py"
     os.environ["FLASK_DEBUG"] = "1"

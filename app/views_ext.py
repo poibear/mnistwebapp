@@ -89,7 +89,6 @@ def evaluate_img(path):
     return (results)
 
 @app.route("/", methods=['GET', 'POST'])
-@app.route("/index", methods=['GET', 'POST'])
 def upload_file():
     form = UploadForm()
     if request.method == 'POST' and form.validate_on_submit(): #if you uploaded & validated ok
@@ -117,6 +116,5 @@ def upload_file():
         return render_template('index.html', title="Home", form = form)
 
 @app.route('/about', methods=['GET'])
-@app.route('/about.html', methods=['GET'])
 def about():
     return render_template("about.html", title="About")
