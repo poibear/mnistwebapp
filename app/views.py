@@ -23,16 +23,16 @@ def allowed_file(filename):
 
 def evaluate_img(path):
     img = cv2.imread(path) #use cv2 type
-    cv2.imshow('threh', img) #show it original
-    cv2.waitKey(0) #close popup lul, no waitkey means we dont wait for window to close
+    #cv2.imshow('threh', img) #show it original
+    #cv2.waitKey(0) #close popup lul, no waitkey means we dont wait for window to close
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    cv2.imshow('threh', gray) #show it gray
-    cv2.waitKey(0)
+    #cv2.imshow('threh', gray) #show it gray
+    #cv2.waitKey(0)
     #color to grayscale
     ret, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV) #otsu to separate pixels to two groups, 
     #greyscale to black/white img
-    cv2.imshow("threh", thresh)
-    cv2.waitKey(0)
+    #cv2.imshow("threh", thresh)
+    #cv2.waitKey(0)
     rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2)) #use smaller input for ai
     dilation = cv2.dilate(thresh, rect_kernel, iterations=5) #define kernel size
     #find connecting images continuous color/brightness change, associate them with a chunk (classification)
