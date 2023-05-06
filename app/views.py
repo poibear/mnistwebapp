@@ -74,7 +74,7 @@ def evaluate_img(path):
         cv2.imwrite(char_path, bg)
         #img_path = char_path.split("app")[1] #what does this even do???
         img_path = char_path.strip("/")
-        img_path = img_path.replace("\\", "/")
+        img_path = img_path.replace("\\", "/") #everything to forward slash
         
         x = img_to_array(bg)
         if np.average(x) - 128 > 0:
