@@ -1,0 +1,7 @@
+TO ENABLE USING PORTS <1024 WITHOUT ROOT
+sudo setcap 'cap_net_bind_service=+ep' /usr/bin/python3.10
+
+TO DISABLE
+sudo setcap 'cap_net_bind_service=-ep' /usr/bin/python3.10
+(or remove the changes in general)
+sudo setcap -r /usr/bin/python3.10
