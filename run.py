@@ -3,7 +3,7 @@
 import waitress
 import os
 from flask import Flask
-from app import app, views_ext
+from app import app, views
 
 def main():
     app.debug = True
