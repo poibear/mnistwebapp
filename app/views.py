@@ -11,7 +11,13 @@ from keras.models import load_model
 from PIL import Image
 import cv2
 
-model_s = load_model(os.path.join(os.path.dirname(__file__), "static/model/mnist.h5"))
+try:
+    ROOT_DIR = os.path.realpath(os.path.join(os.path.join(os.path.dirname(__file__), '.\\static\\model\\')))
+    model_s = load_model(os.path.join(ROOT_DIR, '5Conv1MP_256.h5'))
+    #model_s = load_model(os.path.join(os.path.dirname(__file__), "static/model/5Conv1MP_256.h5"))
+    #load_model(os.path.join(os.path.dirname(__file__), "static/model/5Conv1MP_256.h5"))
+except Exception as e:
+    print(f'load your own MNIST model in views.py!!\nerror: {e}')
 path = ""
 secure_files = []
 
